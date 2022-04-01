@@ -3,14 +3,17 @@ const mongoose = require('mongoose');
 const teacherSchema = new mongoose.Schema({
     teacherName: {
         type: String,
-        required: true
+        
     },
     biography: {
         type: String,
-        required: true
+        
     },
-    photoTeacher: {
+    image: {
         type: Object
+    },
+    imageId: {
+        String
     }
 });
 

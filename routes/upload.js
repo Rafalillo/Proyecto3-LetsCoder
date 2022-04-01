@@ -12,7 +12,7 @@ cloudinary.config({
     api_secret: process.env.CLOUD_API_SECRET
 })
 
-router.post('/upload', auth, authAdmin, async(req, res, next)=> {
+router.post('/upload', async(req, res, next)=> {
     try {
         const file = req.files.file;
         if (!req.files || Object.keys(req.files).length === 0){
@@ -28,26 +28,26 @@ router.post('/upload', auth, authAdmin, async(req, res, next)=> {
             return res.status(400).json({msg: "Formato de imagen no valido"})
         }
 
-        let newFile = await cloudinary.v2.uploader.upload(file.tempFilePath, {folder: "KaiYoga"}, async (err, result) => {
+        let newFile = await cloudinary.v2.uploader.upload(file.tempFilePath, {folder: "KaiYoga-Teacher"}, async (err, result) => {
             if (err) throw err;
 
             removeTmp(file.tempFilePath)
 
-            // res.json({public_id: result.public_id, url: result.secure_url})
-            // next()
+            res.json({public_id: result.public_id, url: result.secure_url})
+        //     next()
 
-            const {name, description, image, price} = req.body;
-        const product = await Product.findOne({name});
-        if (product) {
-            return res.json({msg:"El producto ya existe"});
-        }
-        const newProduct = new Product({
-            name, description, image: { public_id: newFile.public_id, url: newFile.secure_url }, price
-        })
+        //     const {name, description, image, price} = req.body;
+        // const product = await Product.findOne({name});
+        // if (product) {
+        //     return res.json({msg:"El producto ya existe"});
+        // }
+        // const newProduct = new Product({
+        //     name, description, image: { public_id: newFile.public_id, url: newFile.secure_url }, price
+        // })
 
-        await newProduct.save()
-        res.json({msg: "Producto creado"})
-        })
+        // await newProduct.save()
+        // res.json({msg: "Producto creado"})
+         })
 
         
 

@@ -6,7 +6,7 @@ const userCtrl = {
     getUsers: async (req, res) => {
         try {
             const users = await User.find({})
-            return res.json({msg: "Usuario creado",
+            return res.json({msg: "Listado ok",
             users
             })
         } catch (err) {
@@ -52,10 +52,11 @@ const userCtrl = {
                 password: passwordHash
             })
 
-            await newUser.save()
+            await newUser.save();
+            
             return res.json({
                 msg: "Usuario creado correctamente",
-                newUser
+                newUser,
             })
         } catch (error) {
             return res.status(500).send({
@@ -70,30 +71,35 @@ const userCtrl = {
             let user = await User.findOne({email})
             
             if(!password){
-                return res.status(400).send({
-                    message:"COntraseña equivocada"
+                return res.json({
+                    message:"Contraseña equivocada"
                 })
             }
     
             let passwordMatch = await bcrypt.compare(password, user.password)
             if(!passwordMatch) {
-                return res.status(400).send({
+                return res.json({
                    message: "Wrong credential/password"
                 })
             }
     
             if (!user) {
-                return res.status(400).send({
+                return res.json({
                     message:"Usuario no registrado"
                 })
             }
-            const token = accessToken({id:user._id})
+            
+            const role = user.role;
+            const token = accessToken({id:user._id});
+            const userId = user._id
             return res.json({
                 message: "Usuario logueado correctamente",
-                token
+                token,
+                role,
+                userId
             })
         } catch (err) {
-            return res.status(500).json({msg: err.message})
+            return res.json({msg: err.message})
         }
     },
     updateUser: async (req, res) => {

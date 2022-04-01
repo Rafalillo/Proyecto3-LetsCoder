@@ -1,0 +1,115 @@
+.App {
+  text-align: center;
+}
+
+a:link, a:visited, a:active {
+  text-decoration:none;
+  color: grey;
+}
+
+.product-text {
+  margin-top: 10px;
+}
+
+.clases-text {
+  margin-top: 5px;
+}
+
+.text-header-admin {
+  color: #F7F7F7;
+}
+
+.img-Card {
+  width: 75px;
+  margin-top: 75px;
+}
+
+.button-main {
+  margin: 0 5px;
+}
+
+/* .register_form {
+  margin-left: 25%;
+} */
+
+/* .register-form-input {
+  width: 250px!important;
+  align-items: center;
+} */
+/* 
+.register-form-button {
+  margin-left: -70%;
+} */
+
+.list-admin {
+  list-style: none;
+}
+
+.button-admin {
+  margin-top: 5px;
+}
+
+.button-admin-user {
+  margin-top: 45px;
+
+
+}
+
+.img-teacher {
+  width: 50px;
+}
+
+.button-product {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.user-list {
+  height: 255px!important;
+}
+
+.icons-footer {
+  width: 25px
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* @media (max-width: 576px) {
+  .register_form {
+    margin-left: 0;
+  }
+  
+  .register-form-input {
+    width: 250px!important;
+    align-items: center;
+  }
+  
+  .register-form-button {
+    margin-left: 0;
+  }
+  .icons-footer {
+    margin-left: 45px;
+  }
+} */

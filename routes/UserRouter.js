@@ -10,7 +10,7 @@ router.route('/register')
     .post(userCtrl.createUser)
  
 router.route('/user/:id')
-    .get(auth, authAdmin, userCtrl.getOneUser)
+    .get(auth, userCtrl.getOneUser)
     .put(auth, userCtrl.updateUser)
     .delete(auth, userCtrl.deleteUser)
     

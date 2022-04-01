@@ -5,8 +5,11 @@ const auth = require("../middleware/auth");
 router.route('/reserve')
     .post(auth, reserveCtrl.newReserve)
 
-    router.route('/reserve/:id')
+router.route('/reserve')
     .get(auth, reserveCtrl.getReserve)
+
+    router.route('/reserve/:id')
+    .get(auth, reserveCtrl.getOneReserve)
     .delete(auth, reserveCtrl.deleteReserve)
     
 

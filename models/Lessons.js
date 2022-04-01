@@ -21,6 +21,7 @@ const LessonsSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    pupils: []
     
 }, {
     timestamps: true

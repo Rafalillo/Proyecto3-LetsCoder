@@ -39,31 +39,32 @@ const teacherCtrl = {
                 })
             }
 
-            let newFile = await cloudinary.v2.uploader.upload(file.tempFilePath, {
+            await cloudinary.v2.uploader.upload(file.tempFilePath, {
                 folder: "KaiYoga-teacher"
             }, async (err, result) => {
                 if (err) throw err;
 
                 removeTmp(file.tempFilePath)
 
-            const {teacherName, biography, photoTeacher} = req.body;
-            const teacher = await Teacher.findOne({teacherName});
-            if (teacher) {
+            const {teacherName, biography} = req.body;
+            const teacher2 = await Teacher.findOne({teacherName});
+            if (teacher2) {
                 return res.status(400).json({
                     msg: "El profesor ya está en la base de datos"
                 })
             }
-                const newTeacher = new Teacher({
-                    teacherName, biography, photoTeacher: {
-                        public_id: newFile.public_id,
-                        url: newFile.secure_url
-                    }
+                const teacher = new Teacher({
+                    teacherName, 
+                    biography,
+                    image: result.secure_url,
+                    imageId: result.public_id
                 })
 
-                await newTeacher.save()
+                let newTeacher = await teacher.save()
                 
                 res.json({
-                    msg: "Profesor creado"
+                    msg: "Profesor creado",
+                    teacher: newTeacher
                 })
                 
             })

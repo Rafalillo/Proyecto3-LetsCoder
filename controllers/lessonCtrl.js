@@ -5,7 +5,7 @@ var ObjectId = require('mongodb').ObjectID;
 const lessonCtrl = {
     getLessons: async (req, res) => {
         try {
-            const lesson = await Lessons.find({})
+            const lesson = await Lessons.find({}).populate({path:"teacherName", select: 'teacherName'})
             res.json({
                 msg: `Clase encontrada`,
                 lesson
@@ -23,20 +23,21 @@ const lessonCtrl = {
             const {teacherNameid} = req.body;
             let findTeacher = await Teacher.findById(teacherNameid);
             if (!findTeacher) {
-                return res.status(400).json({
+                return res.json({
                     success: false,
-                    msg: "Falta el profesor"
+                    msg: "Falta el profesor",
                 })
             }
             const {lessonName, description, teacherName, time, price} = req.body
             const lesson = new Lessons({
                 lessonName, description, teacherName: teacherNameid, time, price})
             await lesson.save()
-            return res.status(200).send({
-                msg: "Clase creada"
+            return res.json({
+                msg: "Clase creada",
+                lesson
             })
         } catch (err) {
-            return res.status(500).json({
+            return res.json({
                 msg: err.message
             })
         }
@@ -51,9 +52,9 @@ const lessonCtrl = {
     },
     updateLesson: async (req, res) => {
         try {
-            const {lessonName, description, teacher, time, price} = req.body
+            const {lessonName, description, teacherName, time, price} = req.body
             await Lessons.findByIdAndUpdate({_id: req.params.id}, {
-                lessonName, description, teacher, time, price
+                lessonName, description, teacherName, time, price
             })
             res.json({msg: "Clase actualizado"})
         } catch (err) {
