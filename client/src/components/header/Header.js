@@ -26,7 +26,7 @@ function Header() {
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
-                        <Navbar.Brand> <Link to="/home" className="orange">Kai Yoga</Link></Navbar.Brand>
+                        <Navbar.Brand> <Link to="/" className="orange">Kai Yoga</Link></Navbar.Brand>
                         <Navbar.Toggle className="orange" aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
 

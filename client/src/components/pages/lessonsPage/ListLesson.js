@@ -15,7 +15,7 @@ function ListLessons() {
     let go = "";
 
     if (role == 0) {
-        go='/home'
+        go='/'
     }else {
         go='/admin'
     }

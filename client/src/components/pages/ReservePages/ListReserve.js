@@ -71,7 +71,7 @@ function ListReserve() {
             <Link
                 className="btn btn-dark button-product"
                 role="button"
-                to="/home">
+                to="/">
                 Volver
             </Link>
             <Footer />
