@@ -206,7 +206,7 @@ function MainPage() {
                                 </Card.Footer>
                             </Card>
                         </Col>
-                        )
+                        
                     </Row>
                 ))
                 }

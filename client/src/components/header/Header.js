@@ -17,7 +17,7 @@ function Header() {
         localStorage.removeItem("token");
         localStorage.removeItem("role")
         setTimeout(() => {
-            navigate("/login")
+            navigate("/")
         })
     }
 
