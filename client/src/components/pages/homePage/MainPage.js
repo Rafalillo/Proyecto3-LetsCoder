@@ -19,7 +19,7 @@ function MainPage() {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/products", {
+                const response = await axios.get("/api/products", {
                     headers: {
                         Authorization: token
                     }
@@ -35,7 +35,7 @@ function MainPage() {
         getProducts();
         const getUsers = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/user", {
+                const res = await axios.get("/api/user", {
                     headers: {
                         "Authorization": token
                     }
