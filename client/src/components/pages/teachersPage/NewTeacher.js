@@ -91,7 +91,7 @@ function NewTeacher() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response =  await axios.post('http://localhost:5000/api/teacher', {...teacher}, {
+            const response =  await axios.post('/api/teacher', {...teacher}, {
                 headers: {"Authorization": token}
             })
             console.log(response);

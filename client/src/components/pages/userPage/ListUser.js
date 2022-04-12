@@ -13,7 +13,7 @@ function ListUser() {
     useEffect(() => {
         const getUsers = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/user", {
+                const response = await axios.get("/api/user", {
                     headers: {
                         "Authorization": token
                     }

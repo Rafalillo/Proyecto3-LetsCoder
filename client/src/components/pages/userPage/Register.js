@@ -30,7 +30,7 @@ const Register = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/api/register", user);
+            const response = await axios.post("/api/register", user);
             localStorage.setItem('token', response.data.accessToken);
             setSuccessMessage("Usuario registrado correctamente");
             setTimeout(() => {

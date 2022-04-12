@@ -36,7 +36,7 @@ function NewProduct() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response =  await axios.post('http://localhost:5000/api/products', {...productInfo, images}, {
+            const response =  await axios.post('/api/products', {...productInfo, images}, {
                 headers: {"Authorization": token}
             })
             console.log(response);
@@ -67,7 +67,7 @@ function NewProduct() {
             formData.append('file', file)
             console.log(formData);
          
-            const res = await axios.post('http://localhost:5000/api/upload', formData, {
+            const res = await axios.post('/api/upload', formData, {
                 headers: {'content-type': 'multipart/form-data', Authorization: token}
             })
         

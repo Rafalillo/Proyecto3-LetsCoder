@@ -17,7 +17,7 @@ function ListReserve() {
     useEffect(() => {
         const getReserve = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/reserve", {
+                const response = await axios.get("/api/reserve", {
                     headers: {
                         "Authorization": token
                     }

@@ -29,7 +29,7 @@ const Login = () => {
         event.preventDefault();
         try {
             
-            const response = await axios.post("http://localhost:5000/api/login", user);
+            const response = await axios.post("/api/login", user);
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("role", response.data.role);
             localStorage.setItem("userIdMemory", response.data.userId )

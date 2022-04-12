@@ -5,7 +5,8 @@ const authAdmin = require("./middleware/authAdmin");
 const auth = require("./middleware/auth");
 const fileUpload = require('express-fileupload');
 const cors = require('cors')
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
+const path = require ("path");
 
 require("dotenv").config();
 
@@ -30,7 +31,12 @@ mongoose.connect(URL, {
     console.log("BD Conectada")
 })
 
-
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 app.listen(PORT, () => {
     console.log(`servidor a la escucha en puerto ${PORT}`);

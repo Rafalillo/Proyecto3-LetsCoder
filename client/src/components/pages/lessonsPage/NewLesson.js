@@ -31,7 +31,7 @@ function NewLesson() {
     useEffect(() => {
         const getTeachers = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/teacher", {
+                const res = await axios.get("/api/teacher", {
                     headers: {
                         Authorization: token
                     }
@@ -55,7 +55,7 @@ function NewLesson() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/api/newLesson', { ...lessonInfo }, {
+            const response = await axios.post('/api/newLesson', { ...lessonInfo }, {
                 headers: { "Authorization": token }
             })
             console.log(response);

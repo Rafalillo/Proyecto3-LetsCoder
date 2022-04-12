@@ -23,7 +23,7 @@ function ListLessons() {
     useEffect(() => {
         const getLessons = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/lesson", {
+                const response = await axios.get("/api/lesson", {
                     headers: {
                         "Authorization": token
                     }

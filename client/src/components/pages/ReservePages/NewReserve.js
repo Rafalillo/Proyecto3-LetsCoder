@@ -35,7 +35,7 @@ function NewReserve() {
 
     useEffect(() => {
         const getLessons = async () => {
-            const res = await axios.get('http://localhost:5000/api/lesson', {
+            const res = await axios.get('/api/lesson', {
                 headers: { "Authorization": token }
             })
             console.log(res);
@@ -48,7 +48,7 @@ function NewReserve() {
         event.preventDefault();
         try {
 
-            const response = await axios.post('http://localhost:5000/api/reserve', { ...reserveInfo }, {
+            const response = await axios.post('/api/reserve', { ...reserveInfo }, {
                 headers: { "Authorization": token }
             })
             console.log(response);

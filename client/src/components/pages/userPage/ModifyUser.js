@@ -28,7 +28,7 @@ const UserModify = () => {
     const formSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`http://localhost:5000/api/user/${userId}`, {...user},
+            const response = await axios.put(`/api/user/${userId}`, {...user},
             {
                 headers: {
                     "Authorization": token

@@ -19,7 +19,7 @@ const Producto = () => {
 
     useEffect(() => {
         const getProduct = async () => {
-            const response = await axios.get(`http://localhost:5000/api/products/${productoId}`, {
+            const response = await axios.get(`/api/products/${productoId}`, {
                 headers: {
                     "Authorization": token
                 }
@@ -32,7 +32,7 @@ const Producto = () => {
 
     const deleteProduct = async () => {
         try {
-            const res = await axios.delete(`http://localhost:5000/api/products/${productoId}`, {
+            const res = await axios.delete(`/api/products/${productoId}`, {
                 headers: {
                     "Authorization": token
                 }

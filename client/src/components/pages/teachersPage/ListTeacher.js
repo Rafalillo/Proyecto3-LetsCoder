@@ -22,7 +22,7 @@ function ListTeacher() {
     useEffect(() => {
         const getTeachers = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/teacher", {
+                const response = await axios.get("/api/teacher", {
                     headers: {
                         Authorization: token
                     }

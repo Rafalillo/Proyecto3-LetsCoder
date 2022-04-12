@@ -19,7 +19,7 @@ const Profe = () => {
 
     useEffect(() => {
         const getProfesor = async () => {
-            const response = await axios.get(`http://localhost:5000/api/teacher/${profesorId}`, {
+            const response = await axios.get(`/api/teacher/${profesorId}`, {
                 headers: {
                     "Authorization": token
                 }
@@ -32,7 +32,7 @@ const Profe = () => {
 
     const deleteTeacher = async () => {
         try {
-            const res = await axios.delete(`http://localhost:5000/api/teacher/${profesorId}`, {
+            const res = await axios.delete(`/api/teacher/${profesorId}`, {
                 headers: {
                     "Authorization": token
                 }
