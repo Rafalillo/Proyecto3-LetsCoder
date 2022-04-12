@@ -5,7 +5,7 @@ const authAdmin = require("./middleware/authAdmin");
 const auth = require("./middleware/auth");
 const fileUpload = require('express-fileupload');
 const cors = require('cors')
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 require("dotenv").config();
 

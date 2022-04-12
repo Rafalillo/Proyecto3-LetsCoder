@@ -28,38 +28,38 @@ function NewTeacher() {
  
 
     const handleUpload = async e =>{
-        e.preventDefault()
-        try {
+        // e.preventDefault()
+        // try {
             // if(!isAdmin) return setErrorMessage("No eres administrador! ")
-            const file = e.target.files[0]
+            // const file = e.target.files[0]
             
-            if(!file) return setErrorMessage("File not exist.")
+            // if(!file) return setErrorMessage("File not exist.")
 
-            if(file.size > 1024 * 1024) // 1mb
-                return setErrorMessage("Size too large!")
+            // if(file.size > 1024 * 1024) // 1mb
+            //     return setErrorMessage("Size too large!")
 
-            if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-                return setErrorMessage("El formato del archivo es incorrecto!")
+            // if(file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
+            //     return setErrorMessage("El formato del archivo es incorrecto!")
 
-            let formData = new FormData()
-            formData.append('file', file)
-            console.log(formData);
+            // let formData = new FormData()
+            // formData.append('file', file)
+            // console.log(formData);
          
-            const res = await axios.post('http://localhost:5000/api/teacher', formData, {
-                headers: {
-                    'content-type': 'multipart/form-data',
-                     'Authorization': token
-                    }
-            })
-            //console.log(res);
-            setImages({
-                "imageId": res.data.public_id,
-                "image": res.data.url
+            // const res = await axios.post('http://localhost:5000/api/teacher', formData, {
+            //     headers: {
+            //         'content-type': 'multipart/form-data',
+            //          'Authorization': token
+            //         }
+            // })
+            // console.log(res);
+            // setImages({
+            //     "imageId": res.data.public_id,
+            //     "image": res.data.url
                 // data: res.data,
                 // url: res.data.teacher.image,
                 // id: res.data.teacher.imageId
-            })
-            console.log(res.data);
+            // })
+            // console.log(res.data);
             // const resphoto = await axios.post('http://localhost:5000/api/teacher'), {
             //     "photoTeacher": {
             //         "public_id": res.data.public_id,
@@ -68,11 +68,17 @@ function NewTeacher() {
             // }) 
             // console.log(resphoto);
             // setImages(resphoto.data)
+    //         const response = await axios.post('http://localhost:5000/api/teacher', { ...setTeacher }, {
+    //             headers: { "Authorization": token }
+    //         })
+    //         console.log(response);
+    //         setSuccessMessage("Profesor creado correctamente");
 
-        } catch (err) {
-            console.log(err);
-            setErrorMessage(err.response.data.msg)
-        }
+
+    //     } catch (err) {
+    //         console.log(err);
+    //         setErrorMessage(err.response.data.msg)
+    //     }
     }
 
     const handleChange = (event) => {
@@ -85,7 +91,7 @@ function NewTeacher() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response =  await axios.post('http://localhost:5000/api/teacher', {...teacher, images}, {
+            const response =  await axios.post('http://localhost:5000/api/teacher', {...teacher}, {
                 headers: {"Authorization": token}
             })
             console.log(response);
@@ -104,19 +110,15 @@ function NewTeacher() {
         <div>
             <Header />
             <h1>ALTA DE NUEVO PROFESOR</h1>
-            <div className="mb-3" id="formBasicTeacherImage">
-                    <label>Imagen profesor</label> 
-                    <input type="file" name="image" value={teacher.image} placeholder="Imagen profesor" onChange={handleUpload} />
             
-            </div>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicTeacherName">
                     <Form.Label>Nombre profesor</Form.Label>
-                    <Form.Control type="text" name="teacherName" value={teacher.teacherName} placeholder="Nombre profesor" onChange={handleChange} />
+                    <Form.Control className="input" type="text" name="teacherName" value={teacher.teacherName} placeholder="Nombre profesor" onChange={handleChange} />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicTeacherDesc">
                     <Form.Label>Biografía profesor</Form.Label>
-                    <Form.Control type="text" name="biography" value={teacher.biography} placeholder="Biografia profesor" onChange={handleChange} />
+                    <Form.Control className="input" type="text" name="biography" value={teacher.biography} placeholder="Biografia profesor" onChange={handleChange} />
                 </Form.Group>
                 
                 <Button variant="btn btn-dark button-admin" type="submit">
@@ -129,11 +131,16 @@ function NewTeacher() {
                     Volver
                 </Link>
             </Form>
-            
+            <div className="message_ok" style={{display: successMessage ? 'block' : 'none'}} role="alert">
+                {successMessage}
+            </div>
+            <div className="message_error" style={{display: errorMessage ? 'block' : 'none'}} role="alert">
+                {errorMessage}
+            </div>
             
             <Footer />
         </div>
     )
+    
 }
-
 export default NewTeacher;

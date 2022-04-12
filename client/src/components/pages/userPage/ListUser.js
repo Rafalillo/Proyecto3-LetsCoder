@@ -47,9 +47,9 @@ function ListUser() {
                         {users.map(user => {
                             return (
 
-                                <tr>
+                                <tr key={user._id}>
                                     <td>
-                                        <Link key={user._id} to={`/user/${user._id}`}>
+                                        <Link to={`/listUser/${user._id}`}>
                                             {user.userName}
                                         </Link>
                                     </td>

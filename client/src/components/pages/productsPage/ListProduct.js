@@ -2,10 +2,9 @@ import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import HeaderAdmin from "../../header/HeaderAdmin";
 import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import logged from "../../logged/logged";
+
 
 function ListProduct() {
 
@@ -13,8 +12,7 @@ function ListProduct() {
     const [productImage, setProductImage] = useState([]);
     const token = localStorage.getItem("token");
     const role = localStorage.getItem("role");
-    const isAdmin =  (role == 1)? true : false;
-    console.log(isAdmin);
+    let go = "";
 
     useEffect(() => {
         const getProducts = async() => {
@@ -33,8 +31,14 @@ function ListProduct() {
         }
         getProducts()
     },[])
+console.log(products);
 
-
+    
+    if (role == 0) {
+        go='/home'
+    }else {
+        go='/admin'
+    }
 
     return (
         <div>
@@ -55,9 +59,12 @@ function ListProduct() {
                         {products.map(product => (
                             <tr key={product._id}>
 
-                                <td>{product.name}</td>
+                                <td>
+                                    <Link to={`/listProduct/${product._id}`}>{product.name}
+                                    </Link>
+                                </td>
                                 <td>{product.description}</td>
-                                <td><img className="img-teacher" src={product.url} /></td>
+                                <td><img className="img-teacher" src={product.image} /></td>
                                 <td>{product.price}</td>
                             </tr>
                         ))
@@ -69,11 +76,11 @@ function ListProduct() {
                 </Table>
             </div>
 
-
+                    
             <Link
                 className="btn btn-dark button-product"
                 role="button"
-                to="/admin">
+                to={ go }>
                 Volver
             </Link>
             <Footer />

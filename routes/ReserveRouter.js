@@ -9,7 +9,7 @@ router.route('/reserve')
     .get(auth, reserveCtrl.getReserve)
 
     router.route('/reserve/:id')
-    .get(auth, reserveCtrl.getOneReserve)
+    
     .delete(auth, reserveCtrl.deleteReserve)
     
 

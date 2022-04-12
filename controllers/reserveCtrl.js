@@ -42,14 +42,14 @@ const reserveCtrl = {
                 lessonName: lessonNameId
             })
 
-            let finduser = await findlesson.pupils.find(userName => userName._id.equals(id))
-            console.log(id);
-            if (finduser) {
-                return res.status(400).send({
-                    succes: false,
-                    message: "Ya estas registrado en esta clase"
-                })
-            }
+            // let finduser = await findlesson.pupils.find(userName => userName._id.equals(id))
+            // console.log(userName);
+            // if (finduser) {
+            //     return res.status(400).send({
+            //         succes: false,
+            //         message: "Ya estas registrado en esta clase"
+            //     })
+            // }
 
             await Lessons.findByIdAndUpdate(lessonNameId, {
                 $push: { pupils:id}

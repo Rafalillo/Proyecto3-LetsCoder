@@ -16,15 +16,15 @@ function NewProduct() {
     });
 
     const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
-    const isAdmin = true;
+    // const role = localStorage.getItem("role");
+    // const isAdmin = true;
     const [successMessage, setSuccessMessage] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
     const [images, setImages] = useState(false);
 
-    if (role == 0) {
-        isAdmin= false
-    }
+    // if (role == 0) {
+    //     isAdmin= false
+    // }
 
     const handleChange = (event) => {
  
@@ -50,10 +50,9 @@ function NewProduct() {
 
     }
 
-    const handleUpload = async e =>{
+    const handleUpload = async (e) =>{
         e.preventDefault()
         try {
-            if(!isAdmin) return setErrorMessage("No eres administrador! ")
             const file = e.target.files[0]
             
             if(!file) return setErrorMessage("File not exist.")
@@ -68,7 +67,7 @@ function NewProduct() {
             formData.append('file', file)
             console.log(formData);
          
-            const res = await axios.post('http://localhost:5000/api/products', formData, {
+            const res = await axios.post('http://localhost:5000/api/upload', formData, {
                 headers: {'content-type': 'multipart/form-data', Authorization: token}
             })
         

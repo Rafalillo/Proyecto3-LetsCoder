@@ -4,13 +4,21 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "../../header/Header";
 import { useEffect, useState } from "react";
-import Teacher from "../teachersPage/ListTeacher"
+
 
 function ListLessons() {
 
     const [lessons, setLesson] = useState([]);
     const [teacher, setTeacher] = useState({});
     const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+    let go = "";
+
+    if (role == 0) {
+        go='/home'
+    }else {
+        go='/admin'
+    }
 
     useEffect(() => {
         const getLessons = async () => {
@@ -28,11 +36,11 @@ function ListLessons() {
             } catch (error) {
 
             }
-
+            
         }
         getLessons()
     }, [])
-
+    
  
 
 
@@ -41,73 +49,58 @@ function ListLessons() {
             <Header />
             <h1>Listado de clases</h1>
             <div>
-            {
-                lessons.map(lesson => {
-                    return (
-                        <div key={lesson._id}>
-                        
-                        <Table striped bordered hover variant="dark">
+            
+                <Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
 
                             <th>Nombre clase</th>
-                            <th>Profesor</th>
                             
+                            <th>Descripcion</th>
+                            <th>Alumnos</th>
+                            <th>Precio</th>
                         </tr>
                     </thead>
                     <tbody>
-                                                   
-                            <tr>
-                                <td>{lesson.lessonName}</td>
-                                <td>{lesson.teacherName.teacherName}</td>
-                            </tr>
-                      
-
-
-                    </tbody>
-                </Table>
-                        </div>
-                    )
-                })
-            }
-           
-                {/* <Table striped bordered hover variant="dark">
-                    <thead>
-                        <tr>
-
-                            <th>Nombre clase</th>
-                            <th>Apellido</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {lessons.map(lesson => {
+                        {/* {lessons.map(lesson => {
                             return (
                             
-                            <tr>
-                            <Link key={lesson._id} to={`/lesson/${lesson._id}`}>
+                            <tr key={lesson._id}>
+                            
                                 <td>{lesson.lessonName}</td>
-                                </Link>
-
-                                <td>{lesson.surname}</td>
-
-                                <td>{lesson.email}</td>
-
+                                <td>{lesson.teacherName.teacherName}</td>
+                                <td>{lesson.description}</td>
+                                <td>{lesson.pupils.length}</td>
+                                <td>{lesson.price}</td>
                             </tr>
                         )})
 
+                        } */}
+                        {lessons.map(lesson => (
+                            <tr key={lesson._id}>
+
+                                <td>
+                                    <Link to={`/newReserve`}>{lesson.lessonName}
+                                    </Link>
+                                </td>
+                                <td>{lesson.description}</td>
+                                <td>{lesson.pupils.length}</td>
+                                <td>{lesson.price}</td>
+                            </tr>
+                        ))
+
                         }
 
-
+                        
                     </tbody>
-                </Table> */}
+                </Table>
             </div>
 
 
             <Link
                 className="btn btn-dark button-product"
                 role="button"
-                to="/admin">
+                to={ go }>
                 Volver
             </Link>
             <Footer />

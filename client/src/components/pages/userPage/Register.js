@@ -62,7 +62,7 @@ const Register = () => {
                 </Form.Group>
                 <Form.Group className="mb-3 register-form-input" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name="email" value={user.email} placeholder="Enter email" onChange={handleChange} />
+                    <Form.Control type="email" name="email" value={user.email} placeholder="Introduce tu mail" onChange={handleChange} />
                     <Form.Text className="text-muted">
                         No compartiremos tus datos con nadie.
                     </Form.Text>
@@ -72,10 +72,7 @@ const Register = () => {
                     <Form.Label>Contraseña</Form.Label>
                     <Form.Control type="password" name="password" value={user.password} placeholder="Password" onChange={handleChange} />
                 </Form.Group>
-                <Form.Group className="mb-3 register-form-input" controlId="formBasicConfirmPassword">
-                    <Form.Label>Repite contraseña</Form.Label>
-                    <Form.Control type="password" name="confirmPassword" value={user.password} placeholder="Confirma tu contraseña" onChange={handleChange} />
-                </Form.Group>
+               
                 <Button className="register-form-button" variant="dark" type="submit">
                     Submit
                 </Button>

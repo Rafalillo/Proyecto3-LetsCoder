@@ -8,95 +8,70 @@ import { useEffect, useState } from "react";
 
 function ListReserve() {
 
-    const [reserve, setReserve] = useState([]);
-    const [teacher, setTeacher] = useState({});
+    const [reserves, setReserve] = useState([]);
     const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+    let go = "";
+    
 
     useEffect(() => {
-        const getLessons = async () => {
+        const getReserve = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/lesson", {
+                const response = await axios.get("http://localhost:5000/api/reserve", {
                     headers: {
                         "Authorization": token
                     }
                 })
                 console.log(response);
-                setLesson(response.data.lesson);
-                setTeacher(response.data.lesson.teacherName)
-                
-                
+                setReserve(response.data.reserve);
+
             } catch (error) {
 
             }
-
+            console.log(reserves);
         }
-        getLessons()
+        getReserve()
     }, [])
-
- 
-
 
     return (
         <div>
             <Header />
-            <h1>Listado de usuarios</h1>
+            <h1>Listado de reservas por usuario</h1>
             <div>
-            {
-                lessons.map(lesson => {
-                    return (
-                        <div key={lesson._id}>
-                        <p>{lesson.lessonName}</p>
-                        <p>{lesson.teacherName.teacherName}</p>
-                        </div>
-                    )
-                })
-            }
-            {/* {
-                teacher.map(profe => {
-                    return (
-                        <div key={profe._id}>
-                            <p>{profe.teacherName}</p>
-                        </div>
-                    )
-                })
-            } */}
-                {/* <Table striped bordered hover variant="dark">
+                <Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
 
-                            <th>Nombre clase</th>
-                            <th>Apellido</th>
-                            <th>Email</th>
+                            <th>Clase</th>
+                            <th>Usuario</th>
+                            
                         </tr>
                     </thead>
-                    <tbody>
-                        {lessons.map(lesson => {
+                    <tbody striped bordered hover variant="dark">
+                        {reserves.map(reserve => {
                             return (
-                            
-                            <tr>
-                            <Link key={lesson._id} to={`/lesson/${lesson._id}`}>
-                                <td>{lesson.lessonName}</td>
-                                </Link>
 
-                                <td>{lesson.surname}</td>
+                                <tr key={reserve._id}>
+                                    
+                                    <td>{reserve.userName.userName}</td>
 
-                                <td>{lesson.email}</td>
+                                    <td>{reserve.lessonName.lessonName}</td>
 
-                            </tr>
-                        )})
+                                </tr>
+                            )
+                        })
 
                         }
 
 
                     </tbody>
-                </Table> */}
+                </Table>
             </div>
-
 
             <Link
                 className="btn btn-dark button-product"
                 role="button"
-                to="/admin">
+                to="/home">
                 Volver
             </Link>
             <Footer />

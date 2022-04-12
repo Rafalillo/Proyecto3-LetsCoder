@@ -2,21 +2,41 @@
   text-align: center;
 }
 
+body {
+  background-image: url("patron\ yoga.jpg")  ;
+  background-size: cover;
+  background-position: center;
+}
 a:link, a:visited, a:active {
   text-decoration:none;
-  color: grey;
+  color: #FF9918;
+}
+
+Link {
+  color:#FF9918!important;
 }
 
 .product-text {
-  margin-top: 10px;
+  margin-top: 13px;
+  color: #FF9918!important;
+}
+
+.footer-text {
+  color: black!important;
 }
 
 .clases-text {
   margin-top: 5px;
+  color: #FF9918!important;
 }
 
 .text-header-admin {
   color: #F7F7F7;
+}
+
+.input {
+  width: 300px;
+  margin-left: 850px;
 }
 
 .img-Card {
@@ -26,6 +46,14 @@ a:link, a:visited, a:active {
 
 .button-main {
   margin: 0 5px;
+}
+
+.button-teacher {
+  margin-left: 5px;
+}
+
+.btn-dark {
+  color: #FF9918;
 }
 
 /* .register_form {
@@ -47,12 +75,30 @@ a:link, a:visited, a:active {
 
 .button-admin {
   margin-top: 5px;
+  color: #FF9918!important;
+  opacity: 1;
 }
 
 .button-admin-user {
   margin-top: 45px;
+}
 
+.orange {
+  color: #FF9918!important;
+}
 
+.reserve-form {
+  margin-bottom: 150px;
+}
+
+/* h1 {
+  color: #FF9918;
+} */
+
+label {
+  font-weight: bolder;
+  font-size: large;
+  
 }
 
 .img-teacher {
@@ -62,14 +108,21 @@ a:link, a:visited, a:active {
 .button-product {
   margin-left: 5px;
   margin-top: 5px;
+  color: #FF9918!important;
+  opacity: 1
 }
 
 .user-list {
-  height: 255px!important;
+  height: 211px!important;
 }
 
 .icons-footer {
   width: 25px
+}
+
+.button-product-home {
+  margin-top: 10px;
+  margin-left: -150px;
 }
 
 .App-header {
@@ -83,8 +136,31 @@ a:link, a:visited, a:active {
   color: white;
 }
 
+.image-info {
+  height: 250px;
+  width: 250px;
+}
+
 .App-link {
   color: #61dafb;
+}
+
+.col {
+  margin-left: 400px;
+}
+
+.card {
+  margin-top: 50px;
+  opacity: 0.8;
+  
+}
+
+/* .card-admin {
+  margin-left: 80px;
+} */
+
+.login {
+  margin-right: 10px;
 }
 
 @keyframes App-logo-spin {
@@ -96,8 +172,8 @@ a:link, a:visited, a:active {
   }
 }
 
-/* @media (max-width: 576px) {
-  .register_form {
+@media (max-width: 576px) {
+  /* .register_form {
     margin-left: 0;
   }
   
@@ -108,8 +184,35 @@ a:link, a:visited, a:active {
   
   .register-form-button {
     margin-left: 0;
-  }
+  } */
   .icons-footer {
     margin-left: 45px;
   }
-} */
+  .footer-text {
+    color: black!important;
+    margin-left: 50px;
+  }
+  /* .card {
+    margin-top: 50px;
+    opacity: 0.8;
+    width: 400px;
+    margin-left: 0;
+  }
+  .card-admin {
+    width: 300px;
+    margin-left: 12px;
+  } */
+  .col {
+    margin-left: 5px;
+  }
+
+  .input {
+    width: 360px;
+    margin-left: 0;
+  }
+
+  .button-product-home {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+}

@@ -17,7 +17,7 @@ function Header() {
         localStorage.removeItem("token");
         localStorage.removeItem("role")
         setTimeout(() => {
-            navigate("/home")
+            navigate("/login")
         })
     }
 
@@ -26,20 +26,13 @@ function Header() {
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
-                        <Navbar.Brand> <Link to="/home">Kai Yoga</Link></Navbar.Brand>
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                        <Navbar.Brand> <Link to="/home" className="orange">Kai Yoga</Link></Navbar.Brand>
+                        <Navbar.Toggle className="orange" aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav className="me-auto">
-                                <Nav><Link to="/listProduct" className='product-text'>Productos</Link></Nav>
-                                    <NavDropdown title="Clases" className='clases-text' id="collasible-nav-dropdown">
-                                    <NavDropdown.Item> <Link to="/listLesson">Clases</Link></NavDropdown.Item>
-                                    <NavDropdown.Item> <Link to="/listTeacher">Profesores</Link></NavDropdown.Item>
-                                    <NavDropdown.Item> <Link to="/newReserve">Reserva tu clase</Link></NavDropdown.Item>
-                                </NavDropdown>
-                            </Nav>
+
                             <Nav>
-                                <Link to="/login">Login</Link>
-                                <Link eventKey={2} Link to="/register">
+                                <Link to="/login" className='login orange'>Login  </Link>
+                                <Link eventKey={2} Link to="/register" className="orange">
                                     Registro
                                 </Link>
                             </Nav>
@@ -55,20 +48,20 @@ function Header() {
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
-                        <Navbar.Brand> <Link to="/home">Kai Yoga</Link></Navbar.Brand>
+                        <Navbar.Brand> <Link to="/home" className="orange">Kai Yoga</Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav><Link to="/listProduct" className='product-text'>Productos</Link></Nav>
-                                <NavDropdown title="Clases" className='clases-text' id="collasible-nav-dropdown">
-                                    <NavDropdown.Item> <Link to="/listLesson">Clases</Link></NavDropdown.Item>
-                                    <NavDropdown.Item> <Link to="/listTeacher">Profesores</Link></NavDropdown.Item>
-                                    <NavDropdown.Item> <Link to="/newReserve">Reserva tu clase</Link></NavDropdown.Item>
+                                <Nav><Link to="/listProduct" className='product-text orange'>Productos</Link></Nav>
+                                <NavDropdown title="Clases" className='clases-text orange' id="collasible-nav-dropdown">
+                                    <NavDropdown.Item> <Link to="/listLesson" className="orange">Clases</Link></NavDropdown.Item>
+                                    <NavDropdown.Item> <Link to="/listTeacher" className="orange">Profesores</Link></NavDropdown.Item>
+                                    <NavDropdown.Item> <Link to="/newReserve" className="orange">Reserva tu clase</Link></NavDropdown.Item>
                                 </NavDropdown>
                             </Nav>
                             <Nav>
                                 <Nav>
-                                    <Nav><Link to="/home" onClick={logOut}>Logout</Link></Nav>
+                                    <Nav><Link to="/home" onClick={logOut} className="orange">Logout</Link></Nav>
                                 </Nav>
                             </Nav>
                         </Navbar.Collapse>
@@ -83,21 +76,22 @@ function Header() {
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
-                        <Navbar><Link to="/admin">Kai Yoga Administrador</Link></Navbar>
-                        <Nav>
-                            <Nav><Link to="/home" onClick={logOut}>Logout</Link></Nav>
-                        </Nav>
+                        <Navbar>
+                            <Link to="/admin" className="orange">Kai Yoga Administrador</Link></Navbar>
+                            <Nav>
+                            <Link to="/home" onClick={logOut} className="orange">Logout</Link>                            </Nav>
+                        
                     </Container>
                 </Navbar>
             </div>
         )
     }
 
-   let nav = role == 0 ? HeaderUserLogged() : role == 1 ? HeaderAdmin() : HeaderLogin()
+    let nav = role == 0 ? HeaderUserLogged() : role == 1 ? HeaderAdmin() : HeaderLogin()
     return (
         <div>
-            
-            { nav }
+
+            {nav}
         </div>
     )
 }

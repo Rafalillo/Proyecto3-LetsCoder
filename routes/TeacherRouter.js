@@ -6,9 +6,10 @@ const auth = require('../middleware/auth');
 
 router.route('/teacher')
     .get(auth, teacherCtrl.getTeacher)
-    .post(teacherCtrl.newTeacher)
+    .post(auth, authAdmin, teacherCtrl.newTeacher)
 
 router.route('/teacher/:id')
+    .get(auth, teacherCtrl.getOneTeacher)
     .put(auth, authAdmin, teacherCtrl.updateTeacher)
     .delete(auth, authAdmin, teacherCtrl.deleteTeacher)
 

@@ -10,7 +10,7 @@ const teacherSchema = new mongoose.Schema({
         
     },
     image: {
-        type: Object
+        type: String
     },
     imageId: {
         String

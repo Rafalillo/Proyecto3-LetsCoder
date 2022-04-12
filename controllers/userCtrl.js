@@ -113,7 +113,7 @@ const userCtrl = {
                 password
             })
             return res.json({
-                message: "Usuario actualizado"
+                message: "Datos actualizado"
             })
         } catch (error) {
             return res.status(500).send({

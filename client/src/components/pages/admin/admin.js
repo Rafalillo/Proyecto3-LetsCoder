@@ -18,7 +18,7 @@ function Admin() {
                 <Row xs={1} md={2} className="g-4">
 
                     <Col>
-                        <Card>
+                        <Card className="card-admin">
                             <Card.Body>
                                 <Card.Title>OPCIONES DE PRODUCTOS</Card.Title>
                                 <Card.Text>
@@ -40,14 +40,7 @@ function Admin() {
                                                     Modificar producto
                                                 </Link>
                                             </li>
-                                            <li className="list-admin">
-                                            <Link
-                                                    className="btn btn-dark button-admin"
-                                                    role="button"
-                                                    to="/deleteProduct">
-                                                    Borrar producto
-                                                </Link>
-                                            </li>
+                                            
                                             <li className="list-admin">
                                                 <Link
                                                     className="btn btn-dark button-admin"
@@ -63,7 +56,7 @@ function Admin() {
                         </Card>
                     </Col>
                     <Col>
-                        <Card>
+                        <Card className="card-admin">
                             <Card.Body>
                                 <Card.Title>OPCIONES DE CLASES</Card.Title>
                                 <Card.Text>
@@ -85,14 +78,7 @@ function Admin() {
                                                     Modificar clase
                                                 </Link>
                                             </li>
-                                            <li className="list-admin">
-                                            <Link
-                                                    className="btn btn-dark button-admin"
-                                                    role="button"
-                                                    to="/deleteLesson">
-                                                    Borrar clase
-                                                </Link>
-                                            </li>
+                                                                                      
                                             <li className="list-admin">
                                             <Link
                                                     className="btn btn-dark button-admin"
@@ -108,7 +94,7 @@ function Admin() {
                         </Card>
                     </Col>
                     <Col>
-                        <Card>
+                        <Card className="card-admin">
                             <Card.Body>
                                 <Card.Title>OPCIONES DE PROFESORES</Card.Title>
                                 <Card.Text>
@@ -134,14 +120,6 @@ function Admin() {
                                             <Link
                                                     className="btn btn-dark button-admin"
                                                     role="button"
-                                                    to="/deleteTeacher">
-                                                    Borrar profesor
-                                                </Link>
-                                            </li>
-                                            <li className="list-admin">
-                                            <Link
-                                                    className="btn btn-dark button-admin"
-                                                    role="button"
                                                     to="/listTeacher">
                                                     Listado de profesores
                                                 </Link>
@@ -153,7 +131,7 @@ function Admin() {
                         </Card>
                     </Col>
                     <Col>
-                        <Card className="user-list">
+                        <Card className="user-list card-admin">
                             <Card.Body>
                                 <Card.Title>OPCIONES DE USUARIO</Card.Title>
                                 <Card.Text>
@@ -165,14 +143,6 @@ function Admin() {
                                                     role="button"
                                                     to="/listUser">
                                                     Listado de usuarios
-                                                </Link>
-                                            </li>
-                                            <li className="list-admin">
-                                            <Link
-                                                    className="btn btn-dark button-admin"
-                                                    role="button"
-                                                    to="/deleteUser">
-                                                    Borrar usuario
                                                 </Link>
                                             </li>
                                         </ul>
